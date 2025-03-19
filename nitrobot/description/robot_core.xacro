@@ -9,6 +9,21 @@
     <link name="base_link">
     </link>
 
+    <joint name="base_footprint_joint" type="fixed">
+        <parent name="base_link"/>
+        <child name="base_footprint"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="base_footprint"/>
+
+    <joint name="chassis_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis"/>
+        <origin xyz="-0.1 0 0"/>
+    </joint>
+
+
     <link name="chassis">
         <visual>
             <origin xyz="0.15 0 0.075"/>
@@ -32,9 +47,16 @@
         <material>Gazebo/White</material>
     </gazebo>
 
+    <joint name="left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+        <origin xyz="0 0.175 0" rpy="-${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
     <link name="left_wheel"> 
         <visual>
-            <origin xyz="0 0 0"/>
+
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
@@ -43,7 +65,8 @@
         <collision>
             <origin xyz="0 0 0"/>
             <geometry>
-                <cylinder radius="0.05" length="0.04"/>
+                <sphere radius="0.05"/>
+
             </geometry>
         </collision>
         <xacro:inertial_cylinder mass="0.1" length="0.04" radius="0.05">
@@ -53,11 +76,22 @@
 
     <gazebo reference="left_wheel">
         <material>Gazebo/Blue</material>
+        <mu>5.0</mu>  <!-- Lateral friction -->
+        <mu2>5.0</mu2> 
+        <kp>100000.0</kp>  <!-- Stiffness of the contact -->
+        <kd>10.0</kd>  
     </gazebo>
+
+    <joint name="right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin xyz="0 -0.175 0" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
     
     <link name="right_wheel"> 
         <visual>
-            <origin xyz="0 0 0"/>
+
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
@@ -66,7 +100,8 @@
         <collision>
             <origin xyz="0 0 0"/>
             <geometry>
-                <cylinder radius="0.05" length="0.04"/>
+                <sphere radius="0.05"/>
+
             </geometry>
             <material name="blue"/>
         </collision>
@@ -77,7 +112,18 @@
 
     <gazebo reference="right_wheel">
         <material>Gazebo/Blue</material>
+        <mu>5.0</mu>  <!-- Lateral friction -->
+        <mu2>5.0</mu2> 
+        <kp>100000.0</kp>  <!-- Stiffness of the contact -->
+        <kd>10.0</kd>  
     </gazebo>
+
+    <joint name="caster_wheel_joint" type="fixed">
+        <parent link="chassis"/>
+        <child link="caster_wheel"/>
+        <origin xyz="0.24 0 0"/>
+    </joint>
+
 
     <link name="caster_wheel"> 
         <visual>
@@ -99,36 +145,10 @@
 
     <gazebo reference="caster_wheel">
         <material>Gazebo/Black</material>
-        <mul value="0.00001"/>
-        <mu2 value="0.00001"/>
+        <mul value="0.001"/>
+        <mu2 value="0.001"/>
     </gazebo>
 
-    <!-- Joints -->
 
-    <joint name="chassis_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="chassis"/>
-        <origin xyz="-0.1 0 0"/>
-    </joint>
-
-    <joint name="left_wheel_joint" type="continuous">
-        <parent link="base_link"/>
-        <child link="left_wheel"/>
-        <origin xyz="0 0.175 0" rpy="-${pi/2} 0 0"/>
-        <axis xyz="0 0 1"/>
-    </joint>
-
-    <joint name="right_wheel_joint" type="continuous">
-        <parent link="base_link"/>
-        <child link="right_wheel"/>
-        <origin xyz="0 -0.175 0" rpy="${pi/2} 0 0"/>
-        <axis xyz="0 0 -1"/>
-    </joint>
-
-    <joint name="caster_wheel_joint" type="fixed">
-        <parent link="chassis"/>
-        <child link="caster_wheel"/>
-        <origin xyz="0.24 0 0"/>
-    </joint>
 
 </robot>
