@@ -26,10 +26,12 @@ def generate_launch_description():
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
             launch_arguments={'extra_gazebo_args': '--ros-args --params-file ' + gazebo_params_file}.items()
+
     )
 
 
     # Spawn the entity
+    
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-topic', 'robot_description', 
                                    '-entity', 'nitrobot'],
@@ -47,12 +49,14 @@ def generate_launch_description():
         arguments=["joint_broad"]
     )
 
+
     return LaunchDescription([
         rsp,
         gazebo,
         spawn_entity,
         diff_drive_spawner,
         joint_broad_spawner,
+
     ])
 
 

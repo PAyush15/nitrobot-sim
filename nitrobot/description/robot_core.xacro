@@ -23,6 +23,7 @@
         <origin xyz="-0.1 0 0"/>
     </joint>
 
+
     <link name="chassis">
         <visual>
             <origin xyz="0.15 0 0.075"/>
@@ -55,6 +56,7 @@
 
     <link name="left_wheel"> 
         <visual>
+
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
@@ -64,6 +66,7 @@
             <origin xyz="0 0 0"/>
             <geometry>
                 <sphere radius="0.05"/>
+
             </geometry>
         </collision>
         <xacro:inertial_cylinder mass="0.1" length="0.04" radius="0.05">
@@ -88,6 +91,7 @@
     
     <link name="right_wheel"> 
         <visual>
+
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
@@ -97,6 +101,7 @@
             <origin xyz="0 0 0"/>
             <geometry>
                 <sphere radius="0.05"/>
+
             </geometry>
             <material name="blue"/>
         </collision>
@@ -118,6 +123,7 @@
         <child link="caster_wheel"/>
         <origin xyz="0.24 0 0"/>
     </joint>
+
 
     <link name="caster_wheel"> 
         <visual>
@@ -142,6 +148,7 @@
         <mul value="0.001"/>
         <mu2 value="0.001"/>
     </gazebo>
+
 
 
 </robot>
