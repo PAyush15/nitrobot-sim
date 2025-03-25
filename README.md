@@ -1,7 +1,7 @@
 # nitrobot-sim
-A mobile robot simulation to get started with working in ROS2
+A mobile-robot-simulation to get started with Nav2 and SLAM_toolbox in ROS2 and Gazebo.
 
-Building this as a side project to refurbish my skills in ROS2 with mobile robots. This robot is a Differential Drive robot, consisting of sensors like LIDAR, monocular camera and a depth camera.
+Building this as a side project to refurbish my skills in ROS (Now using ROS2) with mobile robots. This robot is a Differential Drive robot, consisting of sensors like LIDAR, monocular camera and a depth camera.
 The goal is to build:
 
 A robot using URDF files in xml language
