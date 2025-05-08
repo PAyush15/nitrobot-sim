@@ -8,7 +8,6 @@ Table of Contents:
   - [Project Structure](#projectstructure)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Hardware Details](#hardwaredetails)
   - [License](#license)
   - [Acknowledgments](#acknowledgments)
 
@@ -127,7 +126,7 @@ mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
 
 # Clone the repository
-git clone https://github.com/PAyush15/autonomous-indoor-delivery-robot
+git clone https://github.com/PAyush15/nitrobot-sim
 
 # Build the workspace
 cd ~/catkin_ws
@@ -171,23 +170,6 @@ Then, to start SLAM for the robot, launch:
 Finally, launch the navigation launch file with the parameter file path
 ```ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true```
 
-## Hardware Details
-
-
-| Component              | Description                                                              | Quantity |
-|------------------------|---------------------------------------------------------------------------|----------|
-| Jetson Nano            | Main onboard processor for navigation, vision, and QR decoding           | 1        |
-| RP Lidar A1            | 2D LiDAR for mapping and obstacle detection                              | 1        |
-| Raspberry Pi Camera V2 | Camera module for scanning QR/aruco codes                                | 1        |
-| SG90 Micro Servo       | Controls locking of delivery compartments                                | 1        |
-| Arduino Uno            | Handles servo, LED, and buzzer control based on Jetson serial commands   | 1        |
-| L298N Motor Driver     | Motor driver to control BO motors                                         | 1        |
-| 60 RPM BO Motors       | DC geared motors for robot mobility                                      | 4        |
-| 18650 Li-ion Cells     | Power supply for Jetson Nano and Arduino                                 | 4        |
-| XL4015 Buck Converter  | Steps down voltage to power Jetson Nano (5V/4A)                          | 1        |
-| 3D Printed Chassis     | Custom modular body for the robot built with ABS                         | -        |
-| Misc. Electronics      | LEDs, buzzers, connectors, jacks, holders, etc.                          | -        |
-
 
 ## License
 
@@ -196,8 +178,6 @@ Feel free to use, modify, and distribute — just give credit where it’s due!
 
 ## Acknowledgments
 
-Thanks to BVM Alumni Association for project funding
-
-Special thanks to Prof. Dr. Vinay Patel for mentorship and guidance
+Thanks to Josh Newans for such an amazing series and getting starting with ROS2!
 
 
