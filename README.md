@@ -13,37 +13,26 @@ Table of Contents:
 
 ## Overview
 
-A ROS2 differential-drive robot created using URDF with sensors such as camera, depth camera and LiDAR. This project is for getting acquainted with ROS2 following the series of 'Building a mobile robot' by Articulated Robotics (Josh Newans) on Youtube.
+A ROS2 simulation of differential-drive robot created using URDF with sensors such as camera, depth camera and LiDAR. This project is for getting acquainted with ROS2 following the series of 'Building a mobile robot' by Articulated Robotics (Josh Newans) on Youtube.
 
 
 ## Demo
 
 
-
 https://github.com/user-attachments/assets/20811afe-c478-42f3-b71b-dbfdf7436685
 
 
-
-Checkout the full video here: https://youtu.be/cQoGame0wjs?si=Tl-N0QOnwe30VAT1
 ## Features
 
 - **Autonomous  Navigation** using ROS Nav2 Stack and Cartographer SLAM
 
-- **Real-Time Obstacle Avoidance** with 2D LiDAR and camera
+- **Real-Time Obstacle Avoidance** with 2D LiDAR and camera (optionally depth cam)
 
-- **Secure Delivery** with QR code-based compartment unlocking
+- **Multiple Control Modes**: teleoperation, joystick, scripted navigation, autonomous mode
 
-- **Live Video Streaming** via Raspberry Pi camera
+- **Custom ROS2 Controller**: Implemented a custom ROS2 controller for controlling the robot
 
-- **Multiple Control Modes**: teleoperation, scripted navigation, autonomous mode
-
-- **Modular 3D-Printed Design** with dual delivery compartments
-
-- **URDF Model Integration** for simulation and parameter tuning
-
-- **Tested in Simulation** before deployment
-
-- **Tested with robot** in real-time
+- **Custom Environment**: Custom envrionment creation and mapping it using slam_toolbox
 
 
 
@@ -84,39 +73,11 @@ autonomous-indoor-delivery-robot-main/
 
 ## Installation
 
-Prerequisites
-Ensure you have ROS Noetic installed on Ubuntu 20.04. If not, install it:
-```bash
-sudo apt update
-sudo apt install ros-noetic-desktop-full
-  ```
-Initialize rosdep and set up your environment:
+**Prerequisites**
 
-```bash
-sudo rosdep init
-rosdep update
-echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-  ```
-
-Install Required ROS Packages
-
-```bash
-sudo apt install -y \
-  ros-noetic-navigation \
-  ros-noetic-slam-gmapping \
-  ros-noetic-teleop-twist-keyboard \
-  ros-noetic-robot-state-publisher \
-  ros-noetic-joint-state-publisher-gui \
-  ros-noetic-xacro \
-  ros-noetic-gazebo-ros \
-  ros-noetic-map-server \
-  ros-noetic-amcl \
-  ros-noetic-rviz \
-  python3-rosdep \
-  python3-rosinstall \
-  python3-vcstools \
-  python3-catkin-tools
+Ensure you have ROS Humble installed on Ubuntu 22.04. If not, install it using this tutorial:
+```
+https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
   ```
   
 Clone and Build the Package
